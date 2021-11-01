@@ -1,3 +1,4 @@
+//using Garbge old tutorial
 extends KinematicBody
 
 var speed = 10
