@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://entity/player/NewFPSCont.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleMesh" id=1]
+mid_height = 3.0
+
+[sub_resource type="CapsuleShape" id=2]
+height = 3.0
+
+[sub_resource type="CylinderShape" id=3]
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1, 0.425005, 0.547321 )
+
+[node name="NewFPSCont" type="KinematicBody"]
+transform = Transform( 0.996818, 0, -0.0797118, 0, 1, 0, 0.0797118, 0, 0.996818, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+cast_shadow = 0
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="Foot" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0 )
+shape = SubResource( 3 )
+
+[node name="Head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0 )
+
+[node name="Camera" type="Camera" parent="Head"]
+
+[node name="hitsbox" type="Area" parent="Head/Camera"]
+transform = Transform( 0.996978, 0, 0.0776761, 0, 1, 0, -0.0776761, 0, 0.996978, -0.0917322, 0, -1.36016 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Head/Camera/hitsbox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000455379, 0.0818295, -0.188277 )
+shape = SubResource( 4 )
+
+[node name="GroundCheck" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+enabled = true
+cast_to = Vector3( 0, -1.5, 0 )
