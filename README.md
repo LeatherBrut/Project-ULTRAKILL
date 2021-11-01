@@ -3,4 +3,4 @@
 
 This project is using godot engine
 there is some missing addons (quodot for mapping)
-and the psx shader is not working 
+and the psx shader is not working/missing
